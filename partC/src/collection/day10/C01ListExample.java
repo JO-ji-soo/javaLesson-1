@@ -1,4 +1,4 @@
-package collection;
+package collection.day10;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,23 +47,12 @@ public class C01ListExample {
     System.out.println("\n 이미 저장되어 있는 값도 추가 됩니까? : "+strlist); //-> 추가 됨
 
     //리스트에서 요소를 찾기(조회)
-    // contains
+    // contains // indexOf  // lastIndexOf
     System.out.println("\n\n 리스트에서 항복 찾기");
     System.out.println("\t 리스트에 처음 아이브 어디 있음?" +strlist.indexOf("아이브"));
     System.out.println("\t 리스트에 마지막 아이브 어디 있음?"+strlist.lastIndexOf("아이브"));
     System.out.println("\t 리스트에 뉴진스 있음?"+strlist.contains("뉴진스"));
     System.out.println("\t 리스트에 뉴진스 어디 있음?"+strlist.indexOf("뉴진스"));
-
-    // indexOf
-    System.out.println("\n contains 사용하기");
-    strlist.indexOf("잇지");
-    System.out.println(strlist.indexOf("잇지"));
-
-    // lastIndexOf
-
-
-
-
   }
 }
 
