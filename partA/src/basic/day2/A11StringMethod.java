@@ -32,7 +32,7 @@ public class A11StringMethod {
          System.out.println("message.indexOf(\"World\")" + message.indexOf("World")); //  7
          System.out.println("message.indexOf(\"world\")" + message.indexOf("world")); // -1
 
-         
+          
          //4.메소드 괄호안에 정수를 2개를 쓰는 것 : substring (문자열 부분 추출: 시작인덱스, 마지막인덱스값을 인자로 주기)
          System.out.println("message.substring(2, 4) :" + message.substring(0, 4));//Hell
          System.out.println("message.substring(2, 4) :" + message.substring(2, 4));//ll

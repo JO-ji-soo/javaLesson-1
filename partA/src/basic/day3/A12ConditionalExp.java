@@ -30,6 +30,6 @@ public class A12ConditionalExp {
     System.out.println("ch가 영문자인가 ? "+((ch>='A' && ch<='Z') || (ch>='a' && ch<='z')));
     System.out.println("ch가 숫자인가 ? "+(ch>='0' && ch<='9'));
     System.out.println("ch가 숫자가 아닌가 ? "+!(ch>='0' && ch<='9'));
- 
+
    }
 }
