@@ -44,7 +44,6 @@ public class JavaWordApp {
     System.out.println("\n 단어 삭제 ~~~~ ");
     myBook.removeWord("iterate");
     System.out.println(myBook);
-  
 
     //전체 단어 출력하기
     public void wordAllPrint(){

@@ -20,6 +20,7 @@ public class JavaWordAppX {
         myBook.addWord(new JavaWordX("collection", "수집", 2));
         myBook.addWord(new JavaWordX("application", "응용프로그램", 2));
         myBook.addWord(new JavaWordX("binary", "2진수의", 3));
+        
 
         //메모장 출력
         myBook.wordAllPrint();
@@ -33,7 +34,6 @@ public class JavaWordAppX {
         //2) List<JavaWord> searchWordByLevel(int level) : 레벨로 조회하기
           List<JavaWordX> list =myBook.searchWordByLevel(3);
           myBook.wordListPrint(list);
-        
           //4. 단어 삭제
 
 

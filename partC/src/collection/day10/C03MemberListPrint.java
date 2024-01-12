@@ -42,14 +42,5 @@ public class C03MemberListPrint {
       System.out.println("\t count="+count++ +",요소="+temp);
       
     }
-
-  
-  
-  
-  
   }
-
-
-
-
 }
