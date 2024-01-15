@@ -8,8 +8,11 @@ import java.util.TreeMap;
 import collection.myappTecher.JavaWordX;
 
 public class JavaWordApp {
+  /**
+   * @param args
+   */
   public static void main(String[] args) {
-    
+    //JavaWord 는 단어객체, JavaWordBood은 단어장 객체
     //단어장을 시작하는 프로그램입니다.
     //1. 단어장을 생성
     JavaWordBook myBook = new JavaWordBook();
@@ -35,9 +38,8 @@ public class JavaWordApp {
     System.out.println(findText+"조회 결과 :"+result);
 
     //2) List<JavaWord> searchWordByLevel1(int level1) : 레벨로 조회하기
-    List<JavaWordX> list =myBook.searchWordByLevel(3);
-    myBook.wordListPrint(list);
-  
+    List<JavaWordX> list =myBook.searchWordByLevel1(3);
+    JavaWordBook.wordListPrint(list);
     
 
     //4. 단어 삭제
@@ -46,11 +48,12 @@ public class JavaWordApp {
     System.out.println(myBook);
 
     //전체 단어 출력하기
-    public void wordAllPrint(){
+    //public void wordAllPrint(){}
 
     }
   }
-}
+
+
 
   
 

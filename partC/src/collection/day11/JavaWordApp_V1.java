@@ -32,7 +32,6 @@ public class JavaWordApp_V1 {
                 case 1:
                     addWord(); //단어등록 메소드 실행
                     break;
-            
                 case 2: listWord(); break;//단어 목록 조회 메소드 실행
 
                 case 3: searchWord(); break; //단어검색 메소드 실행
@@ -54,13 +53,14 @@ public class JavaWordApp_V1 {
     }//start end
 
     private void initialize() {    //words 리스트 요소를 몇개만 저장해서 초기화(테스트)
-        words.add(new JavaWord("pulic", "공용의", 1));
+        words.add(new JavaWord("public", "공용의", 1));
+        words.add(new JavaWord("public", "공동의", 2));
+        words.add(new JavaWord("public", "공동의", 3));
         words.add(new JavaWord("protected", "보호하는", 1));
         words.add(new JavaWord("iterate", "반복자", 3));
         words.add(new JavaWord("collection", "수집", 2));
         words.add(new JavaWord("application", "응용프로그램", 2));
         words.add(new JavaWord("binary", "2진수의", 3));
-        words.add(new JavaWord("pulic", "공동의", 2));
 
     }
     //단어 삭제 : 단어장에 동일한 단어가 2번 이상 있는 경우입니다.
@@ -70,16 +70,18 @@ public class JavaWordApp_V1 {
         System.out.println("영어 단어 입력하세요 . _");
         String find = System.console().readLine();
         boolean isFind =false;                     //단어 존재 유무 확인
-        for(int i=0;i<words.size();i++){
+        for(int i=0;i<words.size();i++){           //for(JavaWord w : words) -> 오류
             if(words.get(i).getEnglish().equals(find)){
                 isFind = true;
-                System.out.println("인덱스"+ i +"에서 단어를 찾았습니다.");
+                System.out.println("단어를 찾았습니다.->" +words.get(i));
                 System.out.println("삭제하려면 엔터, 취소는 n을 입력하세요.");
                 if(System.console().readLine().equals("n"))
                     continue;
                 else{
                     //단어 삭제.
                     words.remove(i); System.out.println("단어 삭제 완료!!");
+                    //삭제 후 다음 인덱스는 초기값보다 하나 작아져야 합니다.
+                    i--;
                 }
             } //단어 비교 if end
         } //for end

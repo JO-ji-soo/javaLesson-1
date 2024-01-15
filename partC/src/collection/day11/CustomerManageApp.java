@@ -8,7 +8,7 @@ import collection.myapp.JavaWord;
 //1월14일 저녁 9시까지 제출해주세요. -공유 구글 드라이브
 public class CustomerManageApp {
     //JavaWordApp V2 형식으로 하세요.
-    private List<Customer> customers = new ArrayList<>();
+    private static List<Customer> customers = new ArrayList<>();
 
     private void start() {
         //메뉴 선택 : 등록,검색(이름/그룹), 삭제, 수정, 전체출력(조회)
@@ -100,12 +100,12 @@ public class CustomerManageApp {
             System.out.println("삭제할 단어는 단어장에 없습니다.");
         }//removecustomer end
 
-    private static void modifyCustomer() {
+    private void modifyCustomer() {
         System.out.println("수정할 고객의 이름을 입력하세요.");
         String nameToModify = System.console().readLine();
     
-        for (Customer customer : customers) {
-            if (customer.getName().equals()) {
+            for (Customer customer : customers) {
+            if (customer.getName().equals(customer)) {
                 System.out.println("새로운 전화번호를 입력하세요:");
                 String newPhone = System.console().readLine();
                 System.out.println("새로운 그룹을 입력하세요(1: 일반, 2: VIP, 3: 기타):");
@@ -116,7 +116,10 @@ public class CustomerManageApp {
                     return;
                 }
             }
-        }//modifycustomer end    
+            System.out.println("고객을 찾을 수 없습니다.");
+        }
+
+        //modifycustomer end    
 
         private static void printAllCustomers() {
             System.out.println("::고객 목록 출력합니다.::");
@@ -124,13 +127,13 @@ public class CustomerManageApp {
                                                 "name","phone","group"));
             for (Customer customer : customers) {
                 System.out.println(String.format("%20s %20s %20d", 
-                                        customer.getName(),customer.getPhone(),customer.getGroup()));
+                                customer.getName(),customer.getPhone(),customer.getGroup()));
             }
         }
 
     public static void main(String[] args) {
        CustomerManageApp app = new CustomerManageApp();
        app.start();
-   }//main end
+    }//main end
 
 }//class end

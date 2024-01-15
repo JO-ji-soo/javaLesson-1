@@ -1,4 +1,4 @@
-package basic.day7;
+package object.day7;
 /*
  * 자바 클래스의 생성자로 메소드 오버로딩 알아보기
  *         ㄴString 클래스 
