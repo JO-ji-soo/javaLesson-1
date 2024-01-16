@@ -1,4 +1,4 @@
-package object.day8;
+package basic.day8;
 
 public abstract class Animal {
 	public static final String TYPE ="동물";	//상수 기호 TYPE을 문자열 지정.

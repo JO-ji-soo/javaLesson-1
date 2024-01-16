@@ -1,0 +1,5 @@
+list, 목록, 1
+static, 정적인, 2
+main, 주요한, 1
+remove, 제거하다, 2
+interface, 접점, 3

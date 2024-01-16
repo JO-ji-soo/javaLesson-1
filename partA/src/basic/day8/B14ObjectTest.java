@@ -1,4 +1,4 @@
-package object.day8;
+package basic.day8;
 
 import object.Test.Square;
 import object.day7.Diamond;

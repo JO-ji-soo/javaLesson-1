@@ -1,4 +1,4 @@
-package object.day8;
+package basic.day8;
 //추상클래스 Animal 테스트
 public class B15AbstractTest {
 

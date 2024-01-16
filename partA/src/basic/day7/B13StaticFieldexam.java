@@ -1,4 +1,4 @@
-package object.day7;
+package basic.day7;
 
 //대표적인 자바클래스 static 필드 확인해보기
 public class B13StaticFieldexam {

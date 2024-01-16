@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "partC/src/io/day13",
+        "partA/src",
+        "partC/src/io/javaword"
+    ]
+}

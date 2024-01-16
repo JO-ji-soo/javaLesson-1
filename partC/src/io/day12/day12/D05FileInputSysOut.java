@@ -1,4 +1,4 @@
-package io.day12;
+package io.day12.day12;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package object.day7;
+package basic.day7;
 /*
  * 자바의 기본 패키지는 java.lang입니다.
  * 지금 테스트할 Math 클래스는 java.lang 에 속하여 import 필요없으나

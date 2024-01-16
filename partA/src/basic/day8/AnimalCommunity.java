@@ -1,4 +1,4 @@
-package object.day8;
+package basic.day8;
 
 
 public class AnimalCommunity {

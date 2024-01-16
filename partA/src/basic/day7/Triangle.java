@@ -1,4 +1,4 @@
-package object.day7;
+package basic.day7;
 
 /* 
 	Shape 클래스로부터 인스턴스 필드와 인스턴스 메소드를 상속받습니다.. (extends) 

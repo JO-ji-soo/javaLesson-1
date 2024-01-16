@@ -1,4 +1,4 @@
-package object;
+package basic;
 
 public class AddQuiz {
     private int data1;

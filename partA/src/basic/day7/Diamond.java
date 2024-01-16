@@ -1,4 +1,4 @@
-package object.day7;
+package basic.day7;
 
 //Shape 클래스 상속 예시 2
 public class Diamond extends Shape{

@@ -1,4 +1,4 @@
-package object.day7;
+package basic.day7;
 
 public class B10DiamondTest {
     public static void main(String[] args) {
