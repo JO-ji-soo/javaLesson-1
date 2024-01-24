@@ -1,4 +1,4 @@
-package object.day8_interface;
+package day8_interface;
 
 public class B16MyClassAMain {
     public static void main(String[] args) {

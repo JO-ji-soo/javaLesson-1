@@ -55,16 +55,11 @@ public class B01MyClassMain {
     MyClass2 my3 = new MyClass2();
 
     //MyClass1 err = new MyClass2();  //오류:객체의 타입과 변수의 타입이 불일치
-  
+
     //private : 사적인,개인적인. MyClass2 변수 외에는 사용할 수 없는 필드.
-    // System.out.println("my1.field1:" + my3.field1); // String
-    // System.out.println("my2.field1:" + my3.field2); // int
-    // System.out.println("my3.field1:" + my3.field3); // double 배열
-
-
-
-
-
+    System.out.println("my1.field1:" + my3.getField1()); // String
+    System.out.println("my2.field1:" + my3.getField2()); // int
+    //System.out.println("my3.field1:" + my3.field3); // double 배열
 
   }
 

@@ -1,15 +1,15 @@
-package object.day8_interface;
+package day8_interface;
 
 
 
 
-import object.day8_interface.Beable.AI;
-import object.day8_interface.Beable.Dog;
-import object.day8_interface.Beable.BeAble;
-import object.day8_interface.Beable.Human;
-import object.day8_interface.Beable.Cookable;
-import object.day8_interface.Beable.Thinkable;
-import object.day8_interface.Beable.Runnable;
+import day8_interface.Beable.AI;
+import day8_interface.Beable.Dog;
+import day8_interface.Beable.BeAble;
+import day8_interface.Beable.Human;
+import day8_interface.Beable.Cookable;
+import day8_interface.Beable.Thinkable;
+import day8_interface.Beable.Runnable;
 
 public class B19BeAbleMain {
 

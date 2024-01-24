@@ -1,4 +1,4 @@
-package object.day8_interface;
+package day8_interface;
 
 //인터페이스 형식 알아보는 연습 
 /*

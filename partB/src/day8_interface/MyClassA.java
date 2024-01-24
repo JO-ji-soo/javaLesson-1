@@ -1,4 +1,4 @@
-package object.day8_interface;
+package day8_interface;
 
 //인터페이스 InterfaceA를 사용하는 구현 클래스 
 // -> InterfaceA 의 추상메소드는 '반드시' 구현해야한다.

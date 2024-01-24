@@ -24,10 +24,11 @@ CREATE TABLE tbl_JavaWord(
 --INSERT INTO 테이블명(컬럼명1,컬럼명2,컬럼명3....) VALUES(값1,값2,값3....),
 --		또는 테이블 모든 컬럼을 추가할 때에는
 --INSERT INTO 테이블명 VALUES(값1,값2,값3...)
-INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (1234,'public','공용의',2);
-INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (2345,'jisoo','지수',3);
-INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (3456,'cute','귀여운',1);
-INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (4567,'pig','돼지',1);
+INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (12,'public','공용의',2);
+INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (8,'jisoo','지수',3);
+INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (9,'cute','귀여운',1);
+INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (10,'pig','돼지',1);
+INSERT INTO tbl_JavaWord(idx,english,korean,step) VALUES (2,'private','사적인',1);
 SELECT * FROM TBL_JAVAWORD;
 
 INSERT  INTO
@@ -35,7 +36,7 @@ INSERT  INTO
  VALUES
  (4567,'pig','돼지');	         --입력하지 않은 컬럼 step 의 값은 null
  
---SELECT 컬럼명1,컬럼명2,...FROM테이블명 => 모든 컬럼을 지정하는 문자는 *(와일드카드 문자)
+--SELECT 컬럼명1,컬럼명2,...FROM테이블명 => 모든 컬럼을 지정하는 문자는 (*=와일드카드 문자)  
 
 SELECT 
   	ENGLISH,KOREAN 
@@ -54,9 +55,24 @@ SELECT * FROM TBL_JAVAWORD WHERE IDX BETWEEN 10 AND 20;	 	--10~20
 SELECT * FROM TBL_JAVAWORD WHERE IDX NOT BETWEEN 10 AND 20; --10~20범위값이 아닌 것
 SELECT * FROM TBL_JAVAWORD WHERE ENGLISH <'public';
 
+--새로운 연산자 
+INSERT INTO TBL_JAVAWORD VALUES (5,'constraint','제약사항',3);
+INSERT INTO TBL_JAVAWORD VALUES (9,'order','순서',1);
 
+--idx 값이 2,5,9 인 것만 조회 
+SELECT * FROM TBL_JAVAWORD WHERE IDX=2 OR IDX=5 OR IDX=9;
+SELECT * FROM TBL_JAVAWORD WHERE IDX IN (2,5,9); 		--OR 연산을 간단하게
 
+--idx 값이 2~5 조회
+SELECT * FROM TBL_JAVAWORD WHERE IDX >=2 AND IDX <=5;   ==AND 연산은 BETWEEN 으로 간단하게
 
+--SELECT 컬럼명1, 컬럼명2,...FROM 테이블명
+--					[WHERE 컬럼명 = 깂] => 특정 컬럼을 조건식으로 조회
+--					[ORDER BY 컬럼명1,컬럼명2[DESC]]
+--				=>지정된 컬럼명으로 정렬. DESC는 내림차순. ASC 오름차순(생략). 컬럼명1이 같은 값이면 컬럼명2로 정렬
+
+SELECT * FROM  TBL_JAVAWORD WHERE IDX IN (2,5,9) ORDER BY IDX;
+INSERT INTO TBL_JAVAWORD VALUES (2,'private','개인적인',1);
 
 
 

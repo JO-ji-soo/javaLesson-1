@@ -1,9 +1,9 @@
-package object.day8;
+package day7;
 
-import object.Test.Square;
-import object.day7.Diamond;
-import object.day7.Shape;
-import object.day7.Triangle;
+import day8_interface.Square;
+import day8.Diamond;
+import object.day8.Shape;
+import object.day8.Triangle;
 
 /*
  * 모든 자바 클래스의 부모는 object 타입.

@@ -21,7 +21,6 @@ public class MyClass2 {
     }
     public double[] getField3(){  
       return field3;  //배열의 참조값을 리턴
-
     }
 
     //private 변수(필드)를 다른 클래스에서 값을 읽고 또는 저장하기 -> getter,setter
@@ -35,7 +34,7 @@ public class MyClass2 {
      field2 =f2;
    
     }
-  public void setField3(double[] f3){ //배열의 값이 인자입니다
+   public void setField3(double[] f3){ //배열의 값이 인자입니다
      //field3=f3;    
      //참조값을 대입시킵니다. 객체가 의도하지 않아도 쉽게 field3 배열값이 변경됩니다.
     // -> 수정하기

@@ -17,7 +17,7 @@ public class A22ForReview {
       for(int i=1;i<=n;i++){
           sum+=i; //sum= sum+i;
       }
-      System.out.println(String.format("1부터 %d 까지의 합계 : %d", n,sum) );
+      System.out.println(String.format("1부터 %d 까지의 합계 : %d", n,sum));
       System.out.println("문제1) 1부터 "+n+"까지의 합계:" + sum);
 
             //2) 1부터 정수 n 까지 곱하기 

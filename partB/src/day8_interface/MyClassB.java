@@ -1,4 +1,4 @@
-package object.day8_interface;
+package day8_interface;
 
 //인터페이스를 다중(여러개)으로 사용하는 구현 클래스 연습입니다.
 //정리 : 상속은 단일 상속, 인터페이스는 다중 구현

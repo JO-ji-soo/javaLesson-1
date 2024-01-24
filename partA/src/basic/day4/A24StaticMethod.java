@@ -36,8 +36,6 @@ public class A24StaticMethod {
         System.out.println("add(34,56,23)" + add(34, 56, 23));
         System.out.println("add(34,78,23)" + add(34, 78, 23));
         System.out.println("add(50,34, 40)"+ add(50.0,34.2,40.0));
-
-
       }
 
     
@@ -59,7 +57,6 @@ public class A24StaticMethod {
   }
   //4) 리턴값이 int 정수인 메소드
   public static int resultIntTest(){
-  
       return 999;
   }
   //5) 리턴값이 boolean 인 메소드
@@ -79,7 +76,6 @@ public class A24StaticMethod {
  
   //인자와 리턴값을 갖는 메소드
   public static int add(int a,int b, int c){
-
     return a+b+c;
   }
   

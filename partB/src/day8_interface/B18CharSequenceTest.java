@@ -1,4 +1,4 @@
-package object.day8_interface;
+package day8_interface;
 
 
 //CharSequence 는 자바에서 만든 인터페이스입니다.
