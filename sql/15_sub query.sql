@@ -64,7 +64,13 @@ FROM
    ) abc
 GROUP BY abc.CUSTOMID
 ORDER BY TOTAL DESC;
-   
+
+
+/*
+ 	고객별로 구매금액이 가장 높은 상품코드를 조회하세요.
+      ㄴ오라클 RANK 함수 (그룹의 결과에 대한 순위를 제공)
+    내림차순 또는 오름차순 정렬된 결과에서 top3 가져오기
+*/
 
 
 
