@@ -11,7 +11,7 @@
 --1) where에서 쓰는 서브쿼리 : twice가 구매한 상품 정보
 SELECT tp.*
 FROM TBL_PRODUCT tp ,TBL_BUY tb 
-WHERE tp.PCODE = tb.PCODE			--1)크로스 연산
+WHERE tp.PCODE = tb.PCODE			    --1)크로스 연산
 AND tb.CUSTOMID = 'twice';				--2)조건식 연산
 
 --서브쿼리
