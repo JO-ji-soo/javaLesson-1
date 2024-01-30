@@ -10,10 +10,11 @@ CREATE SEQUENCE pbuy_seq START WITH 1500;
 
 ALTER TABLE p_buy ADD money number(7) CHECK (money >=10000);		--money = 수량*가격 , 수량*가격으로 총 구매금액 컬럼.
 
--- 웹애플리케이션(인터넷 환경) 개발할 때, JDBC 에서 사용자가 원하는 기능 요청 하나에 sql을 1개씩만 실행을 합니다.
---					   프로시저를 이용하면 요청 한번에 대해 많은 SQL을 실행을 할수 있습니다.
+-- 웹애플리케이션(인터넷 환경) 개발할 때, ※ JDBC 에서 사용자가 원하는 기능 요청을 서버에 보낼 때, 한번에 sql을 1개씩만 실행을 합니다.
+--					   		    ※ 프로시저를 이용하면 요청 한번에 대해 많은 SQL을 실행을 할수 있습니다.
 -- JDBC : Java DataBase Connection. 자바와 db(오라클,mysql 등등)를 연결하는 프로토콜(규칙).
 -- 데이베이스관점에는 `무결성`(정확성) 을 유지할 수 있는 방법.
+
 -- 프로시저에서 트잰잭션을 관리하는 예시 : 최소구매 금액 10000 미만이면 트랜잭션을 롤백.
 CREATE OR REPLACE PROCEDURE "C##IDEV".proc_set_money(	  
 	acustom_id IN varchar2, --  회원ID		-- 입력 매개변수 IN

@@ -20,6 +20,57 @@
 	   곱셈 수식만 계산할 때에는 dual 임시 테이블로 합니다.
 */
 
+--실행을 위한 주요 sql
+--------------------------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE "C##IDEV".money_of_day2(
+	vid IN varchar2, 			--고객ID
+	vdate IN varchar2,			--날짜
+	vtotal_money OUT NUMBER
+)
+IS
+   v_pcode TBL_BUY.PCODE %TYPE;
+   v_quantity TBL_BUY.QUANTITY %TYPE;
+   v_price TBL_PRODUCT.PRICE %TYPE;
+BEGIN
+   SELECT PCODE, QUANTITY                --1일 1구매 조건으로 1개의 행이 조회됨
+      INTO v_pcode , v_quantity          --조회 결과가 N개의 행이면 프로시저의 커서 기능을 이용(나중에)
+      --INTO는 프로시저에서만 사용
+   FROM TBL_BUY
+   WHERE CUSTOMID = p_id AND TO_CHAR(BUY_DATE,'YYYY-MM-DD') = p_date;
+   --테스트를 위한 코드
+   DBMS_OUTPUT.PUT_LINE('* p : ' || v_pcode ||','|| v_quantity );
+   SELECT PRICE
+      INTO v_price
+   FROM TBL_PRODUCT
+   WHERE PCODE = v_pcode;
+   DBMS_OUTPUT.PUT_LINE('* p : ' || v_price);
+   SELECT v_quantity * v_price
+      INTO p_money      --수량*가격 수식 연산결과를 출력매개변수 P_MONEY에 저장
+   FROM dual;         --특정 테이블과 상관 없으므로 DUAL 임시 테이블 사용하여 연산
+   DBMS_OUTPUT.PUT_LINE('* m : ' || p_money);
+   EXCEPTION
+   WHEN no_data_found then
+   DBMS_OUTPUT.PUT_LINE('조건에 맞는 데이터가 없습니다.');
+   P_MONEY :=0;
+END;
+   
+-----------실행-------------------------------------------------------------
+ DECLARE 
+    VMONEY NUMBER(8);--프로시저 실행결과 OUT 매개변수 저장(필수)
+    vid TBL_CUSTOM.CUSTOM_ID%TYPE; --프로시저 실행에 필요한 IN 매개변수값 저장변수
+    VDATE VARCHAR2(20);            --없어도 되지만 출력등 편의상 선언 (VID, VDATE)
+ BEGIN
+   VID := 'mina012';
+   vdate :='2023-11-11';
+   --VID, VDATE IN 매개변수값으로 프로시저 실행
+   --매개 변수에 저장된 프로시저 실행 결과를 VMONEY에 저장
+    MONEY_OF_DAY2(VID,VDATE,vmoney);
+    DBMS_OUTPUT.PUT_LINE(CHR(10)||'고객ID: ' || VID|| ' 날짜: '||VDATE);
+    DBMS_OUTPUT.PUT_LINE('고객님의 구매금액은 ' || vmoney|| '입니다.');
+ END;
+   
+   
+-------------조지수--------------
 CREATE OR REPLACE PROCEDURE "C##IDEV".money_of_day(
 	vid IN varchar2, 			--고객ID
 	vdate IN varchar2,			--날짜
@@ -31,8 +82,9 @@ IS
     vprice NUMBER;
 BEGIN
 	-- 1) 고객ID와 날짜로부터 상품코드와 수량 조회
-	SELECT PCODE, QUANTITY
-	INTO vpcode,vquantity
+	SELECT PCODE, QUANTITY					--1일1구매 조건으로 오직1개의 행이 조회됩니다
+	INTO vpcode,vquantity					--조회 결과가 n개의 행이면 프로시저의 커서 기능을 이용합니다.(나중에 합니다.)
+	--INTO는 프로시저에서만 사용합니다. 조회 결과를 변수에 저장합니다.
 	FROM TBL_BUY
 	WHERE CUSTOMID = vid AND TO_CHAR(BUY_DATE,'yyyy-mm-dd')=vdate;
 
@@ -46,20 +98,19 @@ BEGIN
 	SELECT vprice*vquantity
 	INTO vtotal_money
 	FROM DUAL;
-	
-	
-
 END;
 
-
+------------------프로시저 실행---------------------------------
 	DECLARE
-		vmoney number(8);
-		vid varchar2 (20);
-		vdate varchar2 (20);
+		vmoney number(8);		--프로시저 실행결과를 OUT 매개변수값에 저장.
+		vid tbl_custom.custom_id %TYPE  --프로시저 실행에 필요한 IN 매개변수값 저장변수
+		vdate varchar2 (20);			--없어도 되지만 출력 등 편의상 선언합니다.
 	BEGIN
 		vid : ='mina012';
 		vdate : ='2023-11-10';
 		money_of_day(vid,vdate,vmoney);
+		--vid,vdate IN 매개변수값으로 프로시저를 실행합니다.
+		--OUT 매개변수에 저장된 프로시저 실행 결과를 vmoney변수에 저장합니다.
 		dbms_output.put_line(CHR(10) || '고객ID:'||vid||'날짜:'||vdate);	
 		dbms_output.put_line('고객님의 구매금액은' || vmoney ||'입니다.');
 	END;
