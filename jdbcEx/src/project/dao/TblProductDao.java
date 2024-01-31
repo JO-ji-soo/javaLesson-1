@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import project.vo.ProductVo;
 
@@ -21,7 +22,7 @@ public class TblProductDao {
     //카테고리 목록
     public List<ProductVo> allProducts(){
         List<ProductVo> list = new ArrayList<>();
-        String sql = "SELECT * FROM TBL_PRODUCT";
+        String sql = "SELECT * FROM TBL_PRODUCT" ;
         try(
             Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -42,10 +43,9 @@ public class TblProductDao {
     // 2. 카테고리에 대한 상품 목록
     public List<ProductVo> selectByCategory(String category) {
         List<ProductVo> list = new ArrayList<>();
-        String sql = "SELECT * FROM TBL_PRODUCT tp"
-                    +"WHERE CATEGORY = ?"
-                    +"ORDER BY PNAME";
-        
+        String sql = "SELECT * FROM TBL_PRODUCT tp "
+                    +"WHERE CATEGORY = ? "
+                    +"ORDER BY PNAME ";
         try (
             Connection connection = getConnection();
             PreparedStatement psmt = connection.prepareStatement(sql);
@@ -69,10 +69,9 @@ public class TblProductDao {
     //상품명 유사 검색
     public List<ProductVo> selectByPname(String pname) {
         List<ProductVo> list = new ArrayList<>();
-        String sql = "SELECT * FROM TBL_PRODUCT tp \r\n"
-                    +"WHERE PNAME LIKE '%'|| '사과' || '%'\r\n"
-                    +"ORDER BY CATEGORY";
-        
+        String sql = "SELECT * FROM TBL_PRODUCT tp \r\n "
+                    +"WHERE PNAME LIKE '%'|| '사과' || '%'\r\n "
+                    +"ORDER BY CATEGORY" ;
         try (
             Connection connection = getConnection();
             PreparedStatement psmt = connection.prepareStatement(sql);
@@ -91,6 +90,26 @@ public class TblProductDao {
             System.out.println("selectByPname 실행 예외 발생: " + e.getMessage());
         }
         return list;
+    }
+
+    //상품 가격표 Map에 저장하기
+    public Map<String, Integer> getPriceTable(){
+        Map<String, Integer> map = new HashMap<>();
+        String sql = "select pcode,pric fron tbl_product";
+        try (
+            Connection connection = getConnection();
+            PreparedStatement psmt = connection.prepareStatement(sql))
+        {
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()){
+                map.put(rs.getString(1),
+                rs.getInt(2));
+            }
+
+        }catch (SQLException e) {
+            System.out.println("getPriceTable 실행 예외 발생: " + e.getMessage());
+        }
+        return map;
     }
 
 }

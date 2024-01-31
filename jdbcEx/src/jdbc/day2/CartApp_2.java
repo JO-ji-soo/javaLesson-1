@@ -38,12 +38,12 @@ public class CartApp_2 {
             System.out.print("선택 >>> ");
             String select = System.console().readLine();
             switch (select) {
-                case "M": // 나의 구매내역
+                case "M","m": // 나의 구매내역
                     List<CustomerBuyVo> result = buyDao.selectCustomerBuyList(customerid);
                     for (CustomerBuyVo vo : result)
                         System.out.println(vo);
                     break;
-                case "C":
+                case "C","c":
                     System.out.println("카터고리 : A1-과일 A2-수입과일 B1-인스턴스 B2-선물세트 C1-과자류");
                     System.out.print("카테고리 입력 > ");
                     String category = System.console().readLine();
@@ -51,14 +51,14 @@ public class CartApp_2 {
                     for (ProductVo vo : productlist)
                         System.out.println(vo);
                     break;
-                case "P":
+                case "P","p":
                     System.out.print("상품명 검색어 입력 > ");
                     String pname = System.console().readLine();
                     productlist = productDao.selectByPname(pname);
                     for (ProductVo vo : productlist)
                         System.out.println(vo);
                     break;
-                case "B":
+                case "B","b":
                     System.out.print(" 상품코드를 입력하세요. __ ");
                     String pcode = System.console().readLine();
 
@@ -73,7 +73,7 @@ public class CartApp_2 {
                     else 
                         System.out.println("상품코드 또는 고객아이디 오류입니다");
                     break;
-                case "D":
+                case "D","d":
                     System.out.print("취소할 구매 번호를 입력하세요. __ ");
                     int buy_idx = Integer.parseInt(System.console().readLine());
 
@@ -83,7 +83,7 @@ public class CartApp_2 {
                         System.out.println("없는 구매번호 입니다");
                     break;
 
-                case "Q":
+                case "Q","q":
                     System.out.print(" 수정할 구매 번호를 입력하세요. __ ");
                     buy_idx = Integer.parseInt(System.console().readLine());
 

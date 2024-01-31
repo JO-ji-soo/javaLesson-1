@@ -1,27 +1,17 @@
-package koreaIt.test;
+package koreait.solution;
 
 public abstract class Product {
+    // 1 - [1]
+    protected int price;
+    protected String prdName;   
 
+    // 1 - [2]
+    public abstract String sell(Object object);     
+    @Override
+    public String toString() {
+        return "prdName=" + prdName + ", price=" + price;
+    }
 
-public Product(String prdName, int price){
-    this.prdName = prdName;
-    this.price = price;
+    
 }
 
-//필드 : 공통적인 특성    
-protected String prdName;
-protected int price;
-
-//추상메소드
-public abstract void sell();
-
-//getter
-public String getPrdName() {
-    return this.prdName;
-}
-
-public int getPrice() {
-    return this.price;
-}
-
-}
