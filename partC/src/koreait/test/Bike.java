@@ -16,7 +16,7 @@ public class Bike extends Product{
     //1-[8]  추상클래스 상속 받았으므로 반드시 추상메소드 구현 (재정의)
     @Override
     public String sell(Object object) {
-            return String.format("[%s]행사- %d %% 인하", this.prdName,object);
+            return String.format("[%s]행사- %d %% 인하", prdName,object);
     }
 
     //1 - [4]
@@ -60,9 +60,11 @@ class ELectronics extends Product {
     }
     //1-[6]
     private double kwh;
+
     //2-[2]에서 필요해서 getter setter 만들어야 함
     public void setKwh(double kwh) {
         this.kwh = kwh;
+        
     }public double getKwh() {
         return kwh;
     }

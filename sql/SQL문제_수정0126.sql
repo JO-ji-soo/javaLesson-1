@@ -46,21 +46,29 @@ INSERT INTO TBL_PRODUCT
 INSERT INTO TBL_BUY  
 			VALUES (buy_pk_seq.nextval,'hongGD','BUSA211',2,'2024-01-03');
 
---A-5. 총 구매합산 금액이 100000~200000 값인 고객 ID를 조회하시오.(김태완)
-SELECT CUSTOMID
-FROM TBL_CUSTOM tc ,TBL_BUY tb 
-WHERE CUSTOMID = CUSTOM_ID
-HAVING SUM(PRICE*QUANTITY) BETWEEN 100000 AND 200000; 
-
+--****오류**** A-5. 총 구매합산 금액이 100000~200000 값인 고객 ID를 조회하시오.(김태완)
+SELECT CUSTOMID, SUM(PRICE*QUANTITY)
+FROM TBL_BUY  tb
+JOIN TBL_PRODUCT tp 
+ON tp.PCODE = tb.PCODE
+GROUP BY tb.CUSTOMID
+HAVING SUM(PRICE*QUANTITY) BETWEEN 100000 AND 200000;
 
 
 /*  B조 */
 --B-1. 20대 나이 고객의 구매 상품 코드와 나이를 나이순으로 정렬 조회 (이대환) /* C조 조이루 */
-SELECT PCODE, AGE
+SELECT PCODE, AGE,CUSTOMID 
 FROM TBL_BUY tb ,TBL_CUSTOM tc 
-WHERE AGE BETWEEN 20 AND 30
+WHERE tc.CUSTOM_ID = tb.CUSTOMID 
+AND AGE BETWEEN 20 AND 29
 ORDER BY PCODE, AGE;
 
+--------------------정답코드
+SELECT abc.age, abc.pcode 
+FROM (
+	SELECT * FROM TBL_BUY tb
+    JOIN TBL_CUSTOM tc ON tb.CUSTOMID = tc.CUSTOM_ID AND age>30) abc
+GROUP BY abc.age, abc.pcode;
 
 --B-2. 나이가 가장 많은 고객이 상품을 구매한 횟수를 조회하세요.-서브쿼리 사용하기 (김승한)
 SELECT AGE

@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import jdbc.day1.OracleConnectionUtil;
 import project.vo.ProductVo;
 
 public class TblProductDao {
@@ -93,21 +96,21 @@ public class TblProductDao {
     }
 
     //상품 가격표 Map에 저장하기
-    public Map<String, Integer> getPriceTable(){
+    public Map<String, Integer> getPriceTable() {
         Map<String, Integer> map = new HashMap<>();
-        String sql = "select pcode,pric fron tbl_product";
-        try (
-            Connection connection = getConnection();
-            PreparedStatement psmt = connection.prepareStatement(sql))
-        {
-            ResultSet rs = psmt.executeQuery();
-            while (rs.next()){
-                map.put(rs.getString(1),
-                rs.getInt(2));
-            }
+        String sql = "SELECT pcode, price from tbl_product";
 
-        }catch (SQLException e) {
-            System.out.println("getPriceTable 실행 예외 발생: " + e.getMessage());
+        try (
+                Connection connection = OracleConnectionUtil.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                map.put(rs.getString(1), // key
+                        rs.getInt(2)); // value
+            }
+        } catch (SQLException e) {
+            System.out.println("getProceTable 예외 발생 " + e.getMessage());
         }
         return map;
     }

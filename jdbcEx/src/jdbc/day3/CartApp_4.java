@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.sound.sampled.SourceDataLine;
-
 import project.dao.TblBuyDao;
 import project.dao.TblProductDao;
 import project.vo.BuyVo;
@@ -20,21 +18,20 @@ public class CartApp_4 {
     private TblBuyDao buyDao = new TblBuyDao();
     private TblProductDao productDao = new TblProductDao();
     private List<BuyVo> cart = new ArrayList<>();       //장바구니
+    private Map<String,Integer> priceMap = null;
 
     public CartApp_4(){
         //할일 1 : getPriceTable 메소드 구현.
         //                  ㄴ상품테이블에서 pcode와 price를 조회하여 Map에 저장하기.
         this.priceMap = productDao.getPriceTable();
-        System.out.println("테스트: 가격표 출력");
-        System.out.println(priceMap);
-        //---------------------------------------------------------
+       
     }
 
-    private Map<String, Double> getPriceTable() {
-        // Assuming that productDao.getPriceTable() returns a Map<String, Double> with product codes and prices
-        return productDao.getPriceTable();
-    }
-    }
+    // private Map<String, Double> getPriceTable() {
+    //     // Assuming that productDao.getPriceTable() returns a Map<String, Double> with product codes and prices
+    //     return productDao.getPriceTable();
+    // }
+    
 
     private void showMenu() {
         System.out.println(".".repeat(70));
@@ -167,10 +164,9 @@ public class CartApp_4 {
         }
 
     }
+}
 
 
 
 
 
-
-}   

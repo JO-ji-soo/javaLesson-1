@@ -1,5 +1,6 @@
 package project.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import jdbc.day1.OracleConnectionUtil;
 import project.vo.BuyVo;
 import project.vo.CustomerBuyVo;
 
@@ -189,6 +191,30 @@ public class TblBuyDao {
                 } catch (SQLException e1) {  }
             }
             return count;
+    }
+
+    public int money_of_dayByCustomer(String customid,String buydate){
+        String sql = "{ call money_of_day(?,?,?) }";
+        int money=0;
+        try (
+            Connection connection = OracleConnectionUtil.getConnection();
+            CallableStatement cstmt = connection.prepareCall(sql)
+            ) {
+            //프로시저의 IN 매개변수값 전달 : setXXX
+            cstmt.setString(1, customid);
+            cstmt.setString(2, buydate);
+
+            //프로시저 OUT 매개변수 1) 타입 설정
+            cstmt.registerOutParameter(3, Types.NUMERIC);
+            cstmt.executeUpdate();      //프로시저 실행
+            // OUT 매개변수 2) 결과값 가져오기 : getXXX
+            money = cstmt.getInt(3);
+            
+        } catch (SQLException e) {
+            System.out.println("money_of_day 프로시저 실행 예외 : " + e.getMessage());
+        }
+
+        return money;
     }
 
 }

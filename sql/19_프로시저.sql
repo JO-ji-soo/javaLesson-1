@@ -118,7 +118,20 @@ BEGIN
 	DBMS_OUTPUT.PUT_LINE('=고객나이 : ' || vage);
 END;
 
+--구매수량이 최대인 고객의 이름, 나이 출력하는 프로시저: max_custom
+--일반적인 SQL은? 구매수량이 최대
+--프로시저: SQL로 만든 프로그램 -> 여러 DML로 구성. 필요에 따라 조회결과를 저장하기 위한 변수 = <PLSQL>
 
+SELECT TC.NAME , TC.AGE , SUM(QUANTITY)
+FROM TBL_BUY tb ,TBL_CUSTOM tc 
+WHERE TB.CUSTOMID = TC.CUSTOM_ID AND QUANTITY =(SELECT MAX(QUANTITY) FROM TBL_BUY)
+GROUP BY TC.NAME , TC.AGE;
+-- ->해당 코드처럼 ()() 서브 쿼리가 많이들어가는건 좋지 않음. -> 프로시저로 만들어놓고 실행할 수 있도록..
+--출력(리턴)값이 있다면 OUT변수를 쓰자
+
+
+-자바로 실행 - >max 프로시저
+            -> money 프로시저
 
 
 
