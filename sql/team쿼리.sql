@@ -31,9 +31,14 @@ SELECT tp.PLACE_SEQ, tp.NAME, open_time , close_time
 FROM  tbl_place tp
    , tbl_place_address tpa
 WHERE tp.place_seq = tpa.place_seq
--- 평점 높은 순으로 정렬
-ORDER BY rate DESC;
+AND tp.RATE >= 4.0
+ORDER BY tp.rate DESC;
 
+
+SELECT tp.*
+FROM TBL_PLACE tp , TBL_MENU tm 
+WHERE tp.PLACE_SEQ =tm.PLACE_SEQ 
+AND tp.NAME LIKE '%'||'비주비주'||'%';
 
 -- 5. 수정(평점) 
 UPDATE tbl_place 
@@ -70,6 +75,12 @@ FROM (
 WHERE ROWNUM <=3;
 
 
+
+SELECT tp.place_seq, tp.name, tp.open_time, tp.close_time, tpa.address
+FROM tbl_place tp, tbl_place_address tpa, tbl_area_unit au
+WHERE tp.place_seq = tpa.place_seq
+AND substr(tpa.address, 0, 2) = au.unit_name
+AND au.unit_name = '서울';
 
 
 

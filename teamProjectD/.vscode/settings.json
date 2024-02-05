@@ -4,6 +4,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "d:\\class20231228\\설치파일\\lombok.jar",
-        "d:\\class20231228\\설치파일\\ojdbc11.jar"
+        "d:\\class20231228\\설치파일\\ojdbc11.jar",
+        "d:\\Class231228\\설치프로그램\\lombok.jar",
+        "d:\\Class231228\\설치프로그램\\ojdbc11.jar"
     ]
 }

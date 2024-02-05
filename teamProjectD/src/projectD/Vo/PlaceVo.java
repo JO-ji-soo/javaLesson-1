@@ -1,4 +1,4 @@
-package vo;
+package projectD.Vo;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,4 +23,5 @@ public class PlaceVo {
         return String.format("%8d %-40s %15s %4d \t %10d~%10d \t %10s",
                 place_seq, name, phone, rate, open_time, close_time, food_type);
     }
+
 }
